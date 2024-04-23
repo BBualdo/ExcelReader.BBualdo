@@ -20,6 +20,7 @@ internal class ExcelReaderService : IExcelReaderService
   {
     List<Person> output = [];
     using ExcelPackage package = new ExcelPackage(File);
+    ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
     if (!File.Exists)
     {
