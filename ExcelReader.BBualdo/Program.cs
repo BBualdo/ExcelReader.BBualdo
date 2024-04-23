@@ -15,10 +15,7 @@ using (var context = new PeopleContext())
 
   Console.WriteLine("Database has been successfully set up with the following entries:");
 
-  foreach (var person in context.People)
-  {
-    Console.WriteLine($"Hello {person.FirstName} {person.LastName} from {person.Country}, age {person.Age}.");
-  }
+  ConsoleEngine.GetPeopleTable(context.People.ToList());
 
   Console.WriteLine("Operation completed. Exiting application...");
 }

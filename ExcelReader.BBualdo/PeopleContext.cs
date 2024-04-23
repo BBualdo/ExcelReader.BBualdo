@@ -13,10 +13,6 @@ public class PeopleContext : DbContext
     optionsBuilder.UseSqlServer(System.Configuration.ConfigurationManager.AppSettings.Get("ConnectionString")!);
   }
 
-  protected override void OnModelCreating(ModelBuilder modelBuilder)
-  {
-  }
-
   public void LoadDataFromExcel()
   {
     var excelReaderService = new ExcelReaderService();
