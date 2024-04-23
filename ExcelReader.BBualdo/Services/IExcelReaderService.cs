@@ -2,7 +2,7 @@
 
 namespace ExcelReader.BBualdo.Services;
 
-internal interface IExcelReaderService
+public interface IExcelReaderService
 {
   Task<List<Person>> GetFromExcel();
 }

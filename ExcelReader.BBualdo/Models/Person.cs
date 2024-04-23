@@ -2,7 +2,7 @@
 
 namespace ExcelReader.BBualdo.Models;
 
-internal class Person
+public class Person
 {
   [Key]
   public int Id { get; set; }

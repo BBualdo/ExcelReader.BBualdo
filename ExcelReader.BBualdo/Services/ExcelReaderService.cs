@@ -3,13 +3,13 @@ using OfficeOpenXml;
 
 namespace ExcelReader.BBualdo.Services;
 
-internal class ExcelReaderService : IExcelReaderService
+public class ExcelReaderService : IExcelReaderService
 {
-  internal FileInfo File { get; private set; }
-  internal int StartColumn { get; private set; }
-  internal int StartRow { get; private set; }
+  public FileInfo File { get; private set; }
+  public int StartColumn { get; private set; }
+  public int StartRow { get; private set; }
 
-  internal ExcelReaderService()
+  public ExcelReaderService()
   {
     File = new FileInfo(System.Configuration.ConfigurationManager.AppSettings.Get("FilePath")!);
     StartColumn = int.Parse(System.Configuration.ConfigurationManager.AppSettings.Get("StartCol")!);

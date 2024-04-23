@@ -1,17 +1,24 @@
-﻿using ExcelReader.BBualdo.Models;
-using ExcelReader.BBualdo.Services;
+﻿using ExcelReader.BBualdo;
 
-ExcelReaderService excelReaderService = new();
-List<Person> people = await excelReaderService.GetFromExcel();
+Console.WriteLine("Starting application...");
 
-if (people.Count == 0)
+using (var context = new PeopleContext())
 {
-  Console.WriteLine("No people found.");
-}
-else
-{
-  foreach (Person person in people)
+  Console.WriteLine("Deleting existing database...");
+  context.Database.EnsureDeleted();
+
+  Console.WriteLine("Creating new database...");
+  context.Database.EnsureCreated();
+
+  Console.WriteLine("Loading data from Excel...");
+  context.LoadDataFromExcel();
+
+  Console.WriteLine("Database has been successfully set up with the following entries:");
+
+  foreach (var person in context.People)
   {
-    Console.WriteLine($"\n{person.FirstName} - {person.LastName} - {person.Age} - {person.Country}\n");
+    Console.WriteLine($"Hello {person.FirstName} {person.LastName} from {person.Country}, age {person.Age}.");
   }
+
+  Console.WriteLine("Operation completed. Exiting application...");
 }
